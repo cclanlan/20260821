@@ -1,0 +1,12 @@
+scenario,capacity_kt,CAPEX_usd_m,price_per_t,opex_per_t,debt_pct,equity_pct,interest_rate_pct,revenue_usd_m,opex_usd_m,ebitda_usd_m,interest_usd_m,net_cashflow_usd_m,payback_years,ebitda_margin_pct
+pessimistic,50,300,400,250,60,40,6,20.0,12.5,7.5,10.8,-3.3,40.00,37.50
+base,100,500,600,300,70,30,5,60.0,30.0,30.0,17.5,12.5,16.67,50.00
+optimistic,200,800,800,220,70,30,4,160.0,44.0,116.0,22.4,93.6,6.90,72.50
+
+# Notes
+- capacity_kt: annual production capacity in kilotons (kt = 1,000 tonnes)
+- CAPEX_usd_m: total capital expenditure in million USD
+- price_per_t / opex_per_t: USD per tonne (FOB / operating cost per tonne)
+- revenue_usd_m, opex_usd_m, ebitda_usd_m, interest_usd_m, net_cashflow_usd_m are in million USD
+- payback_years = CAPEX (mUSD) / EBITDA (mUSD)
+- This is a simple high-level project-level snapshot for investor presentation. Detailed 5–10 year cashflow model with depreciation, taxes, working capital and debt amortization can be delivered upon request and after NDA.
