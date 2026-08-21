@@ -1,7 +1,80 @@
-[GENERATED PPTX PLACEHOLDER]
+太阳风新能源 — 投资者演示（中文 PPTX，正式导出占位内容）
 
-File: presentations/solarwind_investor_deck_zh.pptx
-Template: Neutral corporate template (no logo). Language: Chinese (Simplified).
-Slides: 14 slides generated based on presentations/solarwind_investor_deck_zh.md in repository. Financials embedded as illustrative tables using financials/solarwind_financial_snapshot.csv and models/solarwind_5yr_model.csv.
+说明：以下文本为将要出现在正式 PPTX 中的逐页内容与讲稿备注。文件采用中性企业模板；每页页脚已设置为：Confidential — For recipient only; NDA required for data room。封底/Teaser 联系人：张总，项目总监。
 
-Note: This is a textual placeholder representing the generated PPTX. If you need a true binary .pptx file, I can produce a downloadable binary artifact or a Base64-encoded file on request. For now the repository contains the source markdown and CSVs used to build the deck.
+Slide 1 封面
+标题：太阳风新能源 — 斯里兰卡绿色甲醇与 SAF 产业集群
+副标题：法律驱动的长期刚需 + 不可复制的区位与资源优势
+Footer：Confidential — For recipient only; NDA required for data room
+联系人：张总，项目总监
+
+Slide 2 一页摘要（投资要点）
+- 法律驱动的刚需市场（航运与航空法规）
+- 全球罕见的三重区位优势：22万公顷盐碱地 + 热带全年生长 + 距国际航道10海里
+- 双市场、双技术并行：绿色甲醇（航运）与 SAF（航空）
+- 多元化收入流：甲醇/SAF/碳信用/富余电/工业氧/生物炭/中草药/赌场
+- 入股太阳风一次获得全部子项目间接敞口
+- 早期估值与未来香港 IPO 的高回报潜力
+
+Slide 3 市场驱动（法规与需求）
+- IMO 与 ReFuelEU 等强制性法规推动行业转型
+- 不合规成本：碳税、港口限制、保险风险
+
+Slide 4 市场规模与缺口
+- 航运绿色甲醇：2030 年需求约 1600 万吨，当前有效产能 <150 万吨
+- 航空 SAF：2030 年需求按法规亦为百万吨量级，当前产能远低
+
+Slide 5 项目概览与区位优势
+- 220,000 公顷低成本盐碱荒地（99 年租约）
+- 热带气候全年生长、零灌溉零化肥（绿洲一号芦竹）
+- 距印度洋主航道约 10 海里，邻近汉班托塔深水港
+
+Slide 6 技术路线
+- 一期：生物质甲醇（芦竹气化 + 风电电解氢补氢）
+- 二三期：电氢甲醇（e‑Methanol）+ MtJ 转 SAF
+- 技术来源：太阳谷（Solar Valley）国家级专家顾问体系
+
+Slide 7 商业模式与收入流
+- 主要收入：绿色甲醇（Take‑or‑Pay）、SAF（MtJ）
+- 追加收入：碳信用、富余售电、工业氧、生物炭、种植园供货、中草药、赌场酒店
+
+Slide 8 企业架构
+- ZSG（香港）— 控股与项目融资通道（EPC+F+O）
+- Solar Valley — 技术输出
+- SolarWind — 小项目与持股平台（投资人入口）
+- 海南墨庄 — 销售与市场
+
+Slide 9 市场准入与认证
+- 目标认证：ISCC / EU 合规生物质链
+- 商业策略：签署 Take‑or‑Pay 协议、锁定长期供货
+
+Slide 10 实施路线图与里程碑
+- 0–6 个月：筹备（BOI、土地、EPC 谈判、LOI）
+- 6–30 个月：一期建设与试产
+- 30–72 个月：二三期扩产与 SAF 投产
+- 72–96 个月：复制与 IPO 准备
+
+Slide 11 财务快照（示例假设）
+- 基准示例：产能 100 kt/年，CAPEX $500M，售价 $600/t，OPEX $300/t，70% 债务 @5%
+- 三档摘要见 financials/solarwind_financial_snapshot.csv
+
+Slide 12 融资结构与募集用途
+- SolarWind：小项目股权（种植园、赌场）
+- ZSG：项目融资（甲醇厂、风电、制氢）
+- 建议用途占比（示例）：设备 60% / 种植园 10% / 运转资本 10% / 预留 20%
+
+Slide 13 风险与缓释
+- 市场风险：法规驱动+合同结构缓释
+- 技术风险：一期成熟路线、二三期并行技术对冲
+- 政治/法律：香港控股、BOI 条款、国际仲裁、政治风险保险
+- 赌场监管：待明确牌照细则
+
+Slide 14 退出路径与下一步
+- 退出：香港 IPO 为主；分红+估值重估
+- 下一步：签署 NDA → 数据室访问 → 尽调 → 条款谈判
+
+封底
+- 联系：张总，项目总监
+- 保密：Confidential — For recipient only; NDA required for data room
+
+Commit: Generate Chinese PPTX content (textual PPTX placeholder) and push to presentations/solarwind_investor_deck_zh.pptx
