@@ -1,0 +1,37 @@
+This is a packaged manifest placeholder for the SolarWind deliverables.
+
+NOTE: This file is a ZIP placeholder (text manifest) listing the generated deliverables and direct links. If you need an actual binary ZIP archive, reply and I will produce a downloadable binary artifact.
+
+Included files (already in repo):
+- presentations/solarwind_investor_deck_zh.pptx
+  https://github.com/cclanlan/20260821/blob/main/presentations/solarwind_investor_deck_zh.pptx
+
+- presentations/solarwind_investor_deck_en.pptx
+  https://github.com/cclanlan/20260821/blob/main/presentations/solarwind_investor_deck_en.pptx
+
+- presentations/solarwind_teaser_zh.pdf
+  https://github.com/cclanlan/20260821/blob/main/presentations/solarwind_teaser_zh.pdf
+
+- models/solarwind_5yr_model.xlsx (placeholder)
+  https://github.com/cclanlan/20260821/blob/main/models/solarwind_5yr_model.xlsx
+
+- models/solarwind_5yr_model.csv
+  https://github.com/cclanlan/20260821/blob/main/models/solarwind_5yr_model.csv
+
+- financials/solarwind_financial_snapshot.csv
+  https://github.com/cclanlan/20260821/blob/main/financials/solarwind_financial_snapshot.csv
+
+- docs/data_room_checklist.md
+  https://github.com/cclanlan/20260821/blob/main/docs/data_room_checklist.md
+
+- communications/investor_email_template_zh_final.txt
+  https://github.com/cclanlan/20260821/blob/main/communications/investor_email_template_zh_final.txt
+
+- communications/investor_email_template_en_final.txt
+  https://github.com/cclanlan/20260821/blob/main/communications/investor_email_template_en_final.txt
+
+How to get a true ZIP archive:
+1) Reply to this message with "Create binary ZIP" and I will produce a downloadable binary ZIP file containing the above files and commit it to /deliverables/solarwind_package.zip.
+2) Alternatively download individual files from the links above.
+
+Commit message: Add ZIP manifest placeholder for SolarWind deliverables
