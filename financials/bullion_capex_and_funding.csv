@@ -1,0 +1,31 @@
+category,item,amount_usd_m,share_pct,notes
+capex,land_freehold,50.0,5.3,Port City plot 1-01-13 freehold
+capex,superstructure,400.0,42.1,Three towers + basements
+capex,mep_intelligent_systems,128.0,13.5,Building services and smart systems
+capex,hotel_apartment_ffe,100.0,10.5,Interior and FF&E
+capex,casino_specialised,90.0,9.5,Gaming equipment and salon fit-out
+capex,parking_tower,28.0,2.9,1,200-bay automated parking
+capex,medical_centre,35.0,3.7,Regenerative medicine specialised fit-out
+capex,professional_fees,53.0,5.6,Design, legal, consultants
+capex,pre_opening,35.0,3.7,Includes hotel-management company acquisition budget
+capex,contingency,31.0,3.2,Cost-overrun buffer
+capex,TOTAL,950.0,100.0,Unit intensity ≈ US$2,920 per m2 GFA
+funding,sponsor_equity_related,300.0,31.6,Sponsor equity and related-project financing
+funding,vip_salon_presale,150.0,15.8,12 tender first-year rents + 12 JV deposits + pioneer extras; CPCEC escrow
+funding,bank_development_loan,285.0,30.0,10-year international bank loan; 6.0–7.0%; interest-only in construction
+funding,strategic_partners,110.0,11.6,Casino operating partner or regional developer
+funding,flexible_dfi_abs,105.0,11.0,DFI / securitisation activated as needed
+funding,TOTAL,950.0,100.0,Debt/equity ≈ 0.43:1
+construction_spend,phase1_2026Q4_2027Q2,190.0,20.0,Start-up and early works
+construction_spend,phase2_2027Q2_2028Q3,428.0,45.0,Superstructure peak
+construction_spend,phase3_2028Q3_2029Q2,332.0,35.0,Fit-out and opening
+construction_spend,TOTAL,950.0,100.0,
+
+# Government Year-3 fiscal contribution (USD millions) — plan Ch. 8.2.5
+fiscal,ggr_levy_18pct,79.64,,On full-ecosystem GGR
+fiscal,casino_licence_fee,2.20,,Annual
+fiscal,local_entry_levy,0.65,,
+fiscal,corporate_income_tax_20pct,43.31,,Port City concession rate
+fiscal,employee_pit_withholding,5.80,,
+fiscal,indirect_and_other,21.20,,
+fiscal,YEAR3_TOTAL,152.80,,≈ US$153m; ten-year cumulative ≈ US$1.76bn
