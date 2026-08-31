@@ -1,0 +1,14 @@
+year,phase,revenue_usd_m,casino_usd_m,hotel_usd_m,fb_meetings_usd_m,other_usd_m,direct_cost_usd_m,gross_profit_usd_m,opex_usd_m,ebitda_usd_m,ebitda_margin_pct,da_usd_m,ebit_usd_m,interest_usd_m,ebt_usd_m,tax_usd_m,net_income_usd_m,net_margin_pct,operating_cf_usd_m
+Y1,ramp,255.00,110.00,55.00,35.00,55.00,142.80,112.20,55.00,57.20,22.4,50.00,7.20,20.00,-12.80,0.00,-12.80,,32.20
+Y2,growth,480.00,290.00,85.00,55.00,50.00,244.80,235.20,61.00,174.20,36.3,50.00,124.20,18.00,106.20,18.68,87.52,18.2,137.52
+Y3,mature,640.36,381.36,118.50,75.10,65.40,291.82,348.54,67.00,281.54,44.0,50.00,231.54,15.00,216.54,43.31,173.23,27.1,225.23
+Y4,growth,698.00,416.00,129.00,81.00,72.00,313.60,384.40,71.00,313.40,44.9,50.00,263.40,12.00,251.40,50.28,201.12,28.8,253.12
+Y5,growth,761.00,454.00,141.00,87.00,79.00,338.05,422.95,75.00,347.95,45.7,50.00,297.95,10.00,287.95,57.59,230.36,30.3,282.36
+
+# Notes
+# Base-case five-year P&L and operating cash flow. USD millions.
+# Y3 "other" = apartments 15.86 + wellness 17.50 + financial services 9.00 + entertainment/retail 18.70 + parking 4.34 = 65.40.
+# Y1 tax is zero; Y1 loss of US$12.8m is carried forward and used against Y2 taxable profit (plan Ch. 7.4.3).
+# Operating CF ≈ EBITDA − interest − tax ± working capital (Y1 WC −5.0; Y3–Y5 WC +2.0 each).
+# Five-year totals: revenue ≈ US$2.834bn; net income ≈ US$679m; operating CF ≈ US$930m.
+# Source: Business Plan V1.0 Chapters 6.9 and 7.4–7.5.
