@@ -13,6 +13,7 @@ from docx.shared import Cm, Pt, RGBColor, Inches
 
 ROOT = Path("/workspace")
 SRC = Path("/home/ubuntu/.cursor/projects/workspace/agent-tools/00599e27-b8b5-4767-8679-3057bb86e510.txt")
+DOCX_SRC = ROOT / "source" / "bullion_entertainment_city_business_plan_v1.0.docx"
 OUT_DIR = ROOT / "金砖娱乐城商业计划书_V1.1_分章"
 COMBINED_MD = ROOT / "business-plan" / "金砖娱乐城综合开发项目商业计划书_V1.1.md"
 COMBINED_DOCX = ROOT / "business-plan" / "金砖娱乐城综合开发项目商业计划书_V1.1.docx"
@@ -362,17 +363,6 @@ INSERTIONS = [
 ]
 
 
-def load_v1_paragraphs() -> list[str]:
-    raw = SRC.read_text(encoding="utf-8")
-    lines = raw.splitlines()
-    # drop zip header and para-count footer
-    if lines and lines[0].startswith("files:"):
-        lines = lines[1:]
-    if lines and lines[-1].startswith("---PARA COUNT---"):
-        lines = lines[:-1]
-    return [ln.rstrip() for ln in lines if ln.strip()]
-
-
 def to_markdown_line(text: str) -> str:
     # True chapter titles look like "第十一章 实施时间表…". Cross-refs such as
     # "第四章4.3.1节" must stay as body text or they split the document.
@@ -385,18 +375,68 @@ def to_markdown_line(text: str) -> str:
     return text
 
 
-def build_body_markdown(paragraphs: list[str]) -> str:
-    # drop old cover; start at chapter 1
-    start = 0
-    for i, p in enumerate(paragraphs):
-        if p.startswith("第一章"):
-            start = i
-            break
-    paras = paragraphs[start:]
-    md_lines = [to_markdown_line(p) for p in paras]
-    text = "\n\n".join(md_lines)
+def _oxml_text(elem) -> str:
+    return "".join(t.text or "" for t in elem.iter(qn("w:t"))).strip()
+
+
+def table_to_markdown(tbl_elem) -> str:
+    rows: list[list[str]] = []
+    for tr in tbl_elem.iterchildren():
+        if tr.tag.split("}")[-1] != "tr":
+            continue
+        cells: list[str] = []
+        for tc in tr.iterchildren():
+            if tc.tag.split("}")[-1] != "tc":
+                continue
+            raw = " ".join(_oxml_text(tc).split())
+            cells.append(raw.replace("|", "\\|"))
+        if cells:
+            rows.append(cells)
+    if not rows or all(not c for row in rows for c in row):
+        return ""
+    width = max(len(r) for r in rows)
+    for r in rows:
+        if len(r) < width:
+            r.extend([""] * (width - len(r)))
+    header = rows[0]
+    # If first row is blank placeholders, keep it as header anyway
+    lines = [
+        "| " + " | ".join(header) + " |",
+        "| " + " | ".join(["---"] * width) + " |",
+    ]
+    for r in rows[1:]:
+        lines.append("| " + " | ".join(r) + " |")
+    return "\n".join(lines)
+
+
+def v10_docx_to_markdown() -> str:
+    """Rebuild V1.0 body from the original Word file, keeping real tables."""
+    doc = Document(str(DOCX_SRC))
+    chunks: list[str] = []
+    for child in doc.element.body.iterchildren():
+        tag = child.tag.split("}")[-1]
+        if tag == "p":
+            text = _oxml_text(child)
+            if text:
+                chunks.append(to_markdown_line(text))
+        elif tag == "tbl":
+            md = table_to_markdown(child)
+            if md:
+                chunks.append(md)
+    text = "\n\n".join(chunks)
+    idx = text.find("# 第一章")
+    if idx < 0:
+        idx = text.find("第一章")
+    if idx >= 0:
+        text = text[idx:]
+        if not text.startswith("# "):
+            text = to_markdown_line(text.split("\n", 1)[0]) + text[text.find("\n"):]
+    return text
+
+
+def build_body_markdown() -> str:
+    text = v10_docx_to_markdown()
     for anchor, block in INSERTIONS:
-        # insert before the markdown heading that contains the anchor
         patterns = [
             f"## {anchor}",
             f"### {anchor}",
@@ -654,8 +694,7 @@ def write_docx(md: str) -> None:
 
 
 def main():
-    paragraphs = load_v1_paragraphs()
-    body = build_body_markdown(paragraphs)
+    body = build_body_markdown()
     chapters = split_chapters(body)
     write_split_files(COVER, chapters, APPENDIX)
     combined = write_combined_md(COVER, chapters, APPENDIX)

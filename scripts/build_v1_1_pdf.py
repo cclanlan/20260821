@@ -60,18 +60,22 @@ hr { border: none; border-top: 1px solid #c5a572; margin: 18px 0; }
 table {
   border-collapse: collapse;
   width: 100%;
-  margin: 10px 0 14px 0;
-  font-size: 9.5pt;
-  page-break-inside: avoid;
+  margin: 8px 0 12px 0;
+  font-size: 9pt;
+  table-layout: auto;
 }
 th, td {
   border: 1px solid #c9c4b8;
-  padding: 5px 7px;
+  padding: 4px 6px;
   vertical-align: top;
   text-align: left;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
-th { background: #0b1f3a; color: #fff; }
+th { background: #0b1f3a; color: #fff; font-weight: 600; }
 tr:nth-child(even) td { background: #f7f4ee; }
+/* Floor / function tables: keep 楼层 + 面积 compact, let 详细内容 wrap */
+table th:first-child, table td:first-child { white-space: nowrap; }
 .banner {
   background: #8b1e1e;
   color: #fff;
@@ -116,17 +120,23 @@ def main() -> None:
     OUT_HTML.parent.mkdir(parents=True, exist_ok=True)
     OUT_HTML.write_text(html, encoding="utf-8")
 
+    if OUT_PDF.exists():
+        OUT_PDF.unlink()
     cmd = [
         "google-chrome",
-        "--headless=new",
+        "--headless",
         "--disable-gpu",
         "--no-sandbox",
+        "--disable-dev-shm-usage",
         "--hide-scrollbars",
         "--no-pdf-header-footer",
         f"--print-to-pdf={OUT_PDF}",
         f"file://{OUT_HTML.resolve()}",
     ]
-    subprocess.run(cmd, check=True, capture_output=True, text=True)
+    try:
+        subprocess.run(cmd, check=False, capture_output=True, text=True, timeout=90)
+    except subprocess.TimeoutExpired:
+        pass
     if not OUT_PDF.exists() or OUT_PDF.stat().st_size < 10_000:
         raise SystemExit(f"PDF not generated: {OUT_PDF}")
     print("html", OUT_HTML, OUT_HTML.stat().st_size)
