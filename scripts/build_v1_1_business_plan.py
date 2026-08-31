@@ -10,9 +10,13 @@ from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor, Inches
+from docx.table import Table
+from docx.text.paragraph import Paragraph
 
-ROOT = Path("/workspace")
-SRC = Path("/home/ubuntu/.cursor/projects/workspace/agent-tools/00599e27-b8b5-4767-8679-3057bb86e510.txt")
+ROOT = Path(__file__).resolve().parent.parent
+# V1.0 source of truth committed in the repo. V1.1 is regenerated from this
+# document plus the revision blocks defined below.
+SRC = ROOT / "source" / "bullion_entertainment_city_business_plan_v1.0.docx"
 OUT_DIR = ROOT / "金砖娱乐城商业计划书_V1.1_分章"
 COMBINED_MD = ROOT / "business-plan" / "金砖娱乐城综合开发项目商业计划书_V1.1.md"
 COMBINED_DOCX = ROOT / "business-plan" / "金砖娱乐城综合开发项目商业计划书_V1.1.docx"
@@ -362,14 +366,28 @@ INSERTIONS = [
 ]
 
 
+def _iter_docx_lines(container) -> list[str]:
+    """Yield paragraph and table-cell text in document order.
+
+    python-docx's ``Document.paragraphs`` skips text inside tables, so the body
+    is walked element-by-element and table cells are flattened row-major (the
+    same order the downstream markdown/docx builders expect).
+    """
+    lines: list[str] = []
+    for child in container.iterchildren():
+        if child.tag == qn("w:p"):
+            lines.append(Paragraph(child, None).text)
+        elif child.tag == qn("w:tbl"):
+            table = Table(child, None)
+            for row in table.rows:
+                for cell in row.cells:
+                    lines.extend(_iter_docx_lines(cell._tc))
+    return lines
+
+
 def load_v1_paragraphs() -> list[str]:
-    raw = SRC.read_text(encoding="utf-8")
-    lines = raw.splitlines()
-    # drop zip header and para-count footer
-    if lines and lines[0].startswith("files:"):
-        lines = lines[1:]
-    if lines and lines[-1].startswith("---PARA COUNT---"):
-        lines = lines[:-1]
+    doc = Document(str(SRC))
+    lines = _iter_docx_lines(doc.element.body)
     return [ln.rstrip() for ln in lines if ln.strip()]
 
 

@@ -1,0 +1,4 @@
+{
+  "name": "Bullion Entertainment City Business Plan",
+  "install": "pip3 install --user -r requirements.txt"
+}
